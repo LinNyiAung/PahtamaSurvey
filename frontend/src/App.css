@@ -1,0 +1,544 @@
+.App {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 10px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  overflow: hidden;
+  width: 100%;
+}
+
+h1 {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 20px 15px;
+  font-size: 1.5em;
+  word-wrap: break-word;
+}
+
+.survey-form {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* General form row - stays stacked on mobile */
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-row .form-group {
+  flex: 1;
+  margin-bottom: 15px;
+}
+
+/* Specific height row - always side by side */
+.height-row {
+  display: flex;
+  flex-direction: row !important;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.height-row .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.height-row label {
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.height-row input {
+  padding: 10px 12px;
+  font-size: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  background-color: white;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Enhanced Select Styling */
+select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+select:focus {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23667eea' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+}
+
+input:hover, select:hover {
+  border-color: #667eea;
+}
+
+.readonly-input {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  cursor: default;
+}
+
+.selected-employee {
+  display: block;
+  margin-top: 5px;
+  color: #667eea;
+  font-size: 12px;
+}
+
+.bmi-result {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px 0;
+  border-left: 5px solid #667eea;
+}
+
+.bmi-result h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+.bmi-display {
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.bmi-display p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.bmi-display.underweight { 
+  background-color: #e3f2fd; 
+  border-left: 4px solid #2196f3; 
+}
+
+.bmi-display.normal { 
+  background-color: #e8f5e8; 
+  border-left: 4px solid #4caf50; 
+}
+
+.bmi-display.overweight { 
+  background-color: #fff3e0; 
+  border-left: 4px solid #ff9800; 
+}
+
+.bmi-display.obesity { 
+  background-color: #ffebee; 
+  border-left: 4px solid #f44336; 
+}
+
+.submit-btn {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  min-height: 50px;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Extra Small Mobile Devices */
+@media (max-width: 375px) {
+  .App {
+    padding: 5px;
+  }
+  
+  .container {
+    border-radius: 10px;
+  }
+  
+  .survey-form {
+    padding: 15px;
+  }
+  
+  h1 {
+    font-size: 1.3em;
+    padding: 15px 10px;
+  }
+  
+  .height-row {
+    gap: 10px;
+  }
+  
+  .height-row label {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+  
+  .height-row input {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+  
+  input, select {
+    padding: 10px 12px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  select {
+    padding-right: 35px;
+    background-size: 14px;
+    background-position: right 10px center;
+  }
+  
+  label {
+    font-size: 13px;
+  }
+  
+  .form-group {
+    margin-bottom: 18px;
+  }
+  
+  .bmi-result {
+    padding: 12px;
+    margin: 15px 0;
+  }
+  
+  .bmi-result h3 {
+    font-size: 1.1em;
+  }
+  
+  .bmi-display {
+    padding: 12px;
+  }
+  
+  .bmi-display p {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  
+  .submit-btn {
+    font-size: 15px;
+    padding: 14px 20px;
+    min-height: 48px;
+  }
+  
+  .selected-employee {
+    font-size: 11px;
+  }
+}
+
+/* Small Mobile Devices */
+@media (min-width: 376px) and (max-width: 575px) {
+  .height-row {
+    gap: 12px;
+  }
+  
+  .height-row label {
+    font-size: 13px;
+  }
+  
+  .height-row input {
+    padding: 10px 12px;
+    font-size: 15px;
+  }
+  
+  input, select {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Tablet Styles */
+@media (min-width: 576px) {
+  .App {
+    padding: 20px;
+  }
+  
+  .survey-form {
+    padding: 30px;
+  }
+  
+  .form-row {
+    flex-direction: row;
+    gap: 20px;
+  }
+  
+  .height-row {
+    gap: 15px;
+  }
+  
+  .height-row label {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  
+  .height-row input {
+    padding: 12px 15px;
+    font-size: 16px;
+  }
+  
+  h1 {
+    padding: 25px 20px;
+    font-size: 1.8em;
+  }
+  
+  label {
+    font-size: 15px;
+  }
+  
+  .form-group {
+    margin-bottom: 25px;
+  }
+  
+  .selected-employee {
+    font-size: 13px;
+  }
+  
+  .submit-btn {
+    font-size: 17px;
+    padding: 16px 40px;
+  }
+  
+  select {
+    padding-right: 38px;
+    background-size: 15px;
+    background-position: right 11px center;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 768px) {
+  .App {
+    padding: 30px;
+  }
+  
+  .survey-form {
+    padding: 40px;
+  }
+  
+  h1 {
+    padding: 30px 20px;
+    font-size: 2em;
+  }
+  
+  .height-row {
+    gap: 20px;
+  }
+  
+  .height-row label {
+    font-size: 15px;
+  }
+  
+  label {
+    font-size: 16px;
+  }
+  
+  .selected-employee {
+    font-size: 14px;
+  }
+  
+  .bmi-result {
+    padding: 20px;
+  }
+  
+  .submit-btn {
+    font-size: 18px;
+    padding: 17px 40px;
+  }
+  
+  select {
+    padding-right: 40px;
+    background-size: 16px;
+    background-position: right 12px center;
+  }
+}
+
+/* Large Desktop Styles */
+@media (min-width: 992px) {
+  .form-row {
+    gap: 25px;
+  }
+  
+  .height-row {
+    gap: 25px;
+  }
+  
+  .bmi-result h3 {
+    font-size: 1.3em;
+  }
+  
+  .bmi-display p {
+    font-size: 17px;
+  }
+}
+
+/* Landscape Orientation for Mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+  .App {
+    padding: 10px;
+  }
+  
+  .container {
+    margin: 10px auto;
+  }
+  
+  h1 {
+    padding: 15px 20px;
+    font-size: 1.4em;
+  }
+  
+  .survey-form {
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .height-row {
+    margin-bottom: 15px;
+  }
+  
+  .bmi-result {
+    padding: 15px;
+    margin: 15px 0;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .container {
+    background: #1a1a1a;
+    color: #ffffff;
+  }
+  
+  input, select {
+    background-color: #2d2d2d;
+    color: #ffffff;
+    border-color: #444;
+  }
+  
+  select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  }
+  
+  select:focus {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23667eea' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  }
+  
+  .readonly-input {
+    background-color: #333;
+    color: #ccc;
+  }
+  
+  .bmi-result {
+    background: #2d2d2d;
+    border-left-color: #667eea;
+  }
+  
+  label {
+    color: #ffffff;
+  }
+}
+
+/* Focus and Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .submit-btn:hover:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  input, select {
+    border-width: 3px;
+    border-color: #000;
+  }
+  
+  input:focus, select:focus {
+    border-color: #0066cc;
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.3);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .App {
+    background: white;
+    padding: 0;
+  }
+  
+  .container {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  
+  .submit-btn {
+    display: none;
+  }
+  
+  .bmi-result {
+    border: 1px solid #ddd;
+  }
+  
+  .height-row {
+    page-break-inside: avoid;
+  }
+}
