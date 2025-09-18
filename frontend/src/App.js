@@ -3,7 +3,7 @@ import axios from 'axios';
 import Select from 'react-select';
 import './App.css';
 
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = 'https://pahtamasurveyapi.onrender.com';
 
 function App() {
   const [employees, setEmployees] = useState([]);
